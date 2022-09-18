@@ -1,60 +1,87 @@
-const prev = document.querySelector('#prev');
-const play = document.querySelector('#play');
-const next = document.querySelector('#next');
-const audio = document.querySelector('#audio');
+let curr_track = document.createElement('audio');
+let seek_slider = document.querySelector('.slider');
 
-const music = document.createElement('audio');
-audio.appendChild(music);
+let playBtn = document.querySelector('#play')
+let next = document.querySelector('#next');
+let prev = document.querySelector('#prev');
 
-var songs = [
-    "1.mp3",
-    "2.mp3",
-    "3.mp3"
+let card__img = document.querySelector('#card__img')
+let song__name = document.querySelector('.song__name')
+let song__singer = document.querySelector('.song__singer')
+
+var songIndex = 0;
+var isPlaying = false
+
+var songList = [
+    {
+        name: 'Blinding Lights',
+        artist: 'The Weekend',
+        path: './public/songs/blindingLights.mp3',
+        img: './public/img/BL.jpg'
+    },
+    {
+        name: 'One Love',
+        artist: 'Blue',
+        path: './public/songs/oneLove.mp3',
+        img: './public/img/oneLove.jpg'
+    }
 ]
-var index = 0;
-var count = 0
 
-function loadSong(song) {
-    music.src = `audio/${song}`;
-    music.play();
-    count++
+function loadSong(songIndex) {
+    curr_track.src = songList[songIndex].path
+    card__img.src = songList[songIndex].img
+    song__name.innerHTML = songList[songIndex].name
+    song__singer.innerHTML = songList[songIndex].artist
+    curr_track.load()
 }
 
-play.addEventListener('click', () => {
-    if (music.paused) {
-        if (count == 0) {
-            loadSong(songs[index]);
+window.onload = () => {
+    loadSong(songIndex)
+    playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+}
 
-        }
-        else {
-            music.play();
-            console.log("triggered");
-        }
-        play.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-        music.pause();
-        play.innerHTML = '<i class="fas fa-play"></i>';
-    }
-});
+function seekTo() {
+    let seekto = curr_track.duration * (seek_slider.value / 100);
+    curr_track.currentTime = seekto;
+}
 
-next.addEventListener('click', () => {
-    if (index == songs.length - 1) {
-        index = 0;
+function setUpdate() {
+    let seekPosition = 0;
+    if (!isNaN(curr_track.duration)) {
+        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+        seek_slider.value = seekPosition;
     }
-    else {
-        index++;
-    }
-    loadSong(songs[index]);
-    play.innerHTML = '<i class="fas fa-pause"></i>';
-});
+}
 
-prev.addEventListener('click', () => {
-    if (index == 0) {
-        index = songs.length - 1;
+
+// Button Controls
+
+next.addEventListener('click', function nextSong() {
+    songIndex++
+    if (songIndex > songList.length - 1) {
+        songIndex = 0;
     }
-    else {
-        index--;
+    loadSong(songIndex);
+    playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+})
+
+prev.addEventListener('click', function prevSong() {
+    songIndex--
+    if (songIndex < 0) {
+        songIndex = songList.length - 1;
     }
-    loadSong(songs[index]);
-    play.innerHTML = '<i class="fas fa-pause"></i>';
-});
+    loadSong(songIndex);
+})
+
+playBtn.addEventListener("click", function play() {
+    if(playBtn.innerHTML== `<i class="fa-solid fa-pause fa-5x"></i>`){
+        curr_track.pause()
+        playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+        isPlaying=false
+    }
+    else if('<i class="fa-solid fa-play fa-5x"></i>'){
+    playBtn.innerHTML=`<i class="fa-solid fa-pause fa-5x"></i>`
+    curr_track.play()
+    updateTimer = setInterval(setUpdate, 300);
+    }
+})

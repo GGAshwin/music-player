@@ -1,50 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Player</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Jam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="player">
-            <div id="audio">
-            </div>
-            <div class="progress-container" id="progress-container">
-                <div class="progress" id="progress"></div>
-            </div>
-            <div class="controls">
-                <button id="prev">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16"
-                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM8 14.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5z">
-                        </path>
-                        <path d="M7 8l4-3v6z"></path>
-                        <path d="M5 5h2v6h-2v-6z"></path>
-                    </svg>
-                </button>
-                <button id="play">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button id="next">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em"
-                        width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
-                        </path>
-                        <path d="M8 16L13 12 8 8zM13 12L13 16 15 16 15 8 13 8z"></path>
-                    </svg>
-                </button>
+    <div class="card">
+        <div class="card__img">
+            <img src="" alt="image" id="card__img">
+        </div>
+        <div class="song__details">
+            <h2 class="song__name">
+            </h2>
+            <h3 class="song__singer">
+            </h3>
+        </div>
+        <div class="song__controls">
+            <input type="range" min="1" max="100" value="0" class="slider" onchange="seekTo()">
+            <div class="song__buttons">
+                <button id="prev"><i class="fa-solid fa-backward fa-3x"></i></button>
+                <button id="play"></button>
+                <button id="next"><i class="fa-solid fa-forward fa-3x"></i></button>
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+    <script src="./app.js"></script>
 </body>
-
 </html>
