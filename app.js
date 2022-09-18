@@ -12,17 +12,19 @@ let song__singer = document.querySelector('.song__singer')
 var songIndex = 0;
 var isPlaying = false
 
+const path='./public/songs/'
+
 var songList = [
     {
         name: 'Blinding Lights',
         artist: 'The Weekend',
-        path: './public/songs/blindingLights.mp3',
+        path: `${path}blindingLights.mp3`,
         img: './public/img/BL.jpg'
     },
     {
         name: 'One Love',
         artist: 'Blue',
-        path: './public/songs/oneLove.mp3',
+        path: `${path}oneLove.mp3`,
         img: './public/img/oneLove.jpg'
     }
 ]
