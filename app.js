@@ -14,6 +14,9 @@ var isPlaying = false
 
 const path='./public/songs/'
 
+const playImg=`<i class="fa-solid fa-play fa-3x"></i>`
+const pauseImg=`<i class="fa-solid fa-pause fa-3x"></i>`
+
 var songList = [
     {
         name: 'Blinding Lights',
@@ -39,7 +42,7 @@ function loadSong(songIndex) {
 
 window.onload = () => {
     loadSong(songIndex)
-    playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+    playBtn.innerHTML= `${playImg}`
 }
 
 function seekTo() {
@@ -64,7 +67,7 @@ next.addEventListener('click', function nextSong() {
         songIndex = 0;
     }
     loadSong(songIndex);
-    playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+    playBtn.innerHTML= `${playImg}`
 })
 
 prev.addEventListener('click', function prevSong() {
@@ -73,16 +76,17 @@ prev.addEventListener('click', function prevSong() {
         songIndex = songList.length - 1;
     }
     loadSong(songIndex);
+    playBtn.innerHTML= `${playImg}`
 })
 
 playBtn.addEventListener("click", function play() {
-    if(playBtn.innerHTML== `<i class="fa-solid fa-pause fa-5x"></i>`){
+    if(playBtn.innerHTML== `${pauseImg}`){
         curr_track.pause()
-        playBtn.innerHTML= `<i class="fa-solid fa-play fa-5x"></i>`
+        playBtn.innerHTML= `${playImg}`
         isPlaying=false
     }
-    else if('<i class="fa-solid fa-play fa-5x"></i>'){
-    playBtn.innerHTML=`<i class="fa-solid fa-pause fa-5x"></i>`
+    else if('${playImg'){
+    playBtn.innerHTML=`${pauseImg}`
     curr_track.play()
     updateTimer = setInterval(setUpdate, 300);
     }
