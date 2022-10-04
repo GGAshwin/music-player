@@ -8,7 +8,7 @@ body {
 }
 
 .sidebar {
-  background-color: aqua;
+  background-color: whitesmoke;
   position: absolute;
   top: 0;
   left: 0;
@@ -18,17 +18,17 @@ body {
 }
 
 .song__cards {
-  background-color: black;
+  background-color: rgb(50, 50, 52);
   margin-bottom: 5px;
 }
 
 .card {
-  background-color: green;
+  background-color: rgb(50, 50, 52);
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
-  padding: 5px;
+  padding: 14px;
   border-radius: 10px;
   text-align: center;
   width: 20vw;
@@ -41,6 +41,7 @@ body {
   height: 5px;
   background-color: rgb(255, 255, 255);
   transition: opacity 0.3s;
+  border-radius: 10px;
   width: 100%;
 }
 
@@ -50,7 +51,7 @@ body {
   width: 15px;
   height: 15px;
   background-color: white;
-  border: 2px solid salmon;
+  border: 2.5px solid black;
   cursor: pointer;
   border-radius: 100%;
 }
@@ -71,7 +72,7 @@ body {
   justify-content: space-around;
   gap: 10px;
   margin: 20px 0;
-  background-color: black;
+  background-color: whitesmoke;
   max-height: 100%;
   padding: 20px;
   border-radius: 10px;
