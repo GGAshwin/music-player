@@ -5,10 +5,11 @@
 
 body {
   height: 100vh;
+  background-color: #1d1d1d;
 }
 
 .sidebar {
-  background-color: whitesmoke;
+  background-color: black;
   position: absolute;
   top: 0;
   left: 0;
@@ -23,7 +24,7 @@ body {
 }
 
 .card {
-  background-color: rgb(50, 50, 52);
+  background-color: #161616;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -31,7 +32,13 @@ body {
   padding: 14px;
   border-radius: 10px;
   text-align: center;
+  color: white;
   width: 20vw;
+  
+}
+
+.card:hover{
+  background-color: black;
 }
 
 .slider {
@@ -87,6 +94,8 @@ body {
   margin: 0;
   transition: 0.3s ease-in-out;
   outline: none;
+  background-color: #161616;
+  color: white;
 }
 #prev:hover, #play:hover, #next:hover {
   background-color: black;
