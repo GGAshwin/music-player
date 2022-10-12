@@ -1,4 +1,4 @@
 
 This is a Javascript based music player 
 
-Ceaed by GG Ashwin 
+Created by GG Ashwin 
